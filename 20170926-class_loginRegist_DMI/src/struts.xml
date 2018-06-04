@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <package name="login/regist" extends="struts-default">
+        <action name="loginAction" class="nuc.sw.action.Action" method="loginMethod">
+            <result name="success">
+                addBook.jsp
+            </result>
+            <result name="error">
+                login.jsp
+            </result>
+            <result name="input">login.jsp</result>
+        </action>
+        <action name="registAction" class="nuc.sw.action.Action" method="registMethod">
+            <result name="registOK">login.jsp</result>
+            <result name="input">login.jsp</result>
+        </action>
+    </package>
+    <constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+</struts>
