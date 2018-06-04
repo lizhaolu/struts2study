@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+<!DOCTYPE validators PUBLIC
+        "-//Apache Struts//XWork Validator 1.0.3//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+
+<validators>
+    <field name="username">
+        <field-validator type="requiredstring">
+            <param name="trim">true</param>
+            <message>用户必须输入</message>
+        </field-validator>
+        <field-validator type="stringlength">
+            <param name="minLength">6</param>
+            <param name="maxLength">15</param>
+            <message>用户名的长度必须为6~15位</message>
+        </field-validator>
+    </field>
+    <field name="password1">
+        <field-validator type="requiredstring">
+            <param name="trim">true</param>
+            <message>密码必须输入</message>
+        </field-validator>
+        <field-validator type="stringlength">
+            <param name="minLength">6</param>
+            <param name="maxLength">15</param>
+            <message>密码的长度必须为6~15位</message>
+        </field-validator>
+    </field>
+    <field name="password2">
+        <field-validator type="fieldexpression">
+            <param name="expression"><![CDATA[(password1==password2)]]></param>
+            <message>两次密码必须相同</message>
+        </field-validator>
+    </field>
+    <field name="birth">
+        <field-validator type="date">
+            <param name="min">1980-01-01</param>
+            <param name="max">2017-10-11</param>
+            <message>生日必须在${min}到${max}之间</message>
+        </field-validator>
+    </field>
+    <field name="phone">
+        <field-validator type="regex">
+            <param name="regexExpression">^13[0-9]{9}$</param>
+            <message>电话不合理，必须以13开头且为11位</message>
+        </field-validator>
+    </field>
+    <field name="email">
+        <field-validator type="requiredstring">
+            <message>邮箱不能为空！</message>
+        </field-validator>
+        <field-validator type="email">
+            <param name="fieldName">email</param>
+            <message>邮箱格式错误</message>
+        </field-validator>
+    </field>
+</validators>
